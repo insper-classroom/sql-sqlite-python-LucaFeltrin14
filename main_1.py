@@ -29,13 +29,12 @@ estudantes = [
     ('Maria Oliveira', 'Química', 2022)
 ]
 
-# cursor.executemany("""
-# INSERT INTO Estudantes (Nome, Curso, AnoDeIngresso)
-# VALUES (?, ?, ?);
-# """, estudantes)
+cursor.executemany("""
+INSERT INTO Estudantes (Nome, Curso, AnoDeIngresso)
+VALUES (?, ?, ?);
+""", estudantes)
 
-# conn.commit()
-cursor.execute("SELECT * FROM Estudantes WHERE AnoDeIngresso = 2019 OR AnoDeIngresso = 2020")
+cursor.execute("SELECT * FROM Estudantes WHERE AnoDeIngresso BETWEEN 2019 AND 2020")
 
 cursor.execute("UPDATE Estudantes SET AnoDeIngresso = ? WHERE Nome = ?", (2021, "João Alves"))
 

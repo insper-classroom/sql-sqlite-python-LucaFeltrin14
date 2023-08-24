@@ -35,15 +35,19 @@ estudantes = [
 # """, estudantes)
 
 # conn.commit()
-cursor.execute("SELECT * FROM Estudantes")
+cursor.execute("SELECT * FROM Estudantes WHERE AnoDeIngresso = 2019 OR AnoDeIngresso = 2020")
 
 cursor.execute("UPDATE Estudantes SET AnoDeIngresso = ? WHERE Nome = ?", (2021, "João Alves"))
 
-cursor.execute("DELETE FROM Estudantes WHERE Nome = ?", ("Ana Silva",))
+cursor.execute("DELETE FROM Estudantes WHERE ID = ?", (1,))
 
-conn.commit()
+cursor.execute("SELECT * FROM Estudantes WHERE Curso = 'Computação' AND AnoDeIngresso > 2019")
+
+cursor.execute("UPDATE Estudantes SET AnoDeIngresso = ? WHERE Curso = ?", (2018, "Computação"))
 
 cursor.execute("SELECT * FROM Estudantes")
+
 print(cursor.fetchall())
+conn.commit()
 
 conn.close()
